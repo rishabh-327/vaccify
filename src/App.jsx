@@ -7,6 +7,7 @@ import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 import AppSheet from './components/AppSheet'
 import AppInput from './components/AppInput'
+import AppSelect from './components/AppSelect'
 
 function App() {
   const initialValues = {
@@ -57,12 +58,19 @@ function App() {
                           {() => (
                             <Form>
                               <AppInput
-                                label="PINCODE"
+                                label="Pincode"
                                 id="pincode"
                                 name="pincode"
                                 type="text"
                                 placeholder="987321"
                               />
+
+                              <AppSelect label="State" id="state" name="state">
+                                <option value="">Select state</option>
+                                <option value="guj">Gujarat</option>
+                                <option value="raj">Rajasthan</option>
+                                <option value="mh">Maharashtra</option>
+                              </AppSelect>
                             </Form>
                           )}
                         </Formik>

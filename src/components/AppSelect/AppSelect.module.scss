@@ -1,41 +1,42 @@
 @import '../../styles/variables.scss';
 
-label.appInputLabel {
+label.appSelectLabel {
   font-size: 0.9rem;
   margin-bottom: 4px;
 }
 
-input.appInputField {
+select.appSelectField {
   width: 100%;
   padding: 0.5rem;
   border: none;
   border-radius: $borderRadius;
+  // appearance: none;
 
   &:focus {
     border: 1px solid $primaryColor;
   }
 }
 
-.appInputErrorMessage {
+.appSelectErrorMessage {
   font-size: 0.85rem;
   color: $dangerColor;
   margin-top: 4px;
 }
 
 :global(.light) {
-  label.appInputLabel {
+  label.appSelectLabel {
     color: $textMutedColor;
   }
-  input.appInputField {
+  select.appSelectField {
     color: $textColor;
     background-color: $surfaceColor;
   }
 }
 :global(.dark) {
-  label.appInputLabel {
+  label.appSelectLabel {
     color: $darkTextMutedColor;
   }
-  input.appInputField {
+  select.appSelectField {
     color: $darkTextColor;
     background-color: $darkSurfaceColor;
   }
