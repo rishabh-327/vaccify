@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+label.appInputLabel {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+input.appInputField {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: $borderRadius;
+
+  &:focus {
+    border: 1px solid $primaryColor;
+  }
+}
+
+.appInputErrorMessage {
+  font-size: 0.85rem;
+  color: $dangerColor;
+  margin-top: 4px;
+}
+
+:global(.light) {
+  label.appInputLabel {
+    color: $textMutedColor;
+  }
+  input.appInputField {
+    color: $textColor;
+    background-color: $surfaceColor;
+  }
+}
+:global(.dark) {
+  label.appInputLabel {
+    color: $darkTextMutedColor;
+  }
+  input.appInputField {
+    color: $darkTextColor;
+    background-color: $darkSurfaceColor;
+  }
+}
