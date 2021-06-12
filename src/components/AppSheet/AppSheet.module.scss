@@ -1,0 +1,14 @@
+@import '../../styles/variables.scss';
+
+.appSheet {
+  border-radius: $borderRadius;
+  padding: 1rem;
+}
+:global(.light) .appSheet {
+  background-color: $sheetColor;
+  box-shadow: $thinShadow;
+}
+:global(.dark) .appSheet {
+  background-color: $darkSheetColor;
+  box-shadow: $darkThinShadow;
+}
