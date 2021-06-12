@@ -2,7 +2,7 @@ import styles from './App.module.scss'
 
 function App() {
   return <div className={styles.app}>
-    <h1>Vaccify</h1>
+    <h1 className="app-title">vaccify</h1>
   </div>
 }
 
