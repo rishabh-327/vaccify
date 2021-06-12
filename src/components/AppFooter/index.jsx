@@ -3,7 +3,7 @@ import styles from './AppFooter.module.scss'
 
 const AppFooter = () => {
   return (
-    <footer className={styles['app-footer']}>
+    <footer className={styles['appFooter']}>
       <Container className="h-100">
         <Row className="justify-content-center align-items-center h-100">
           <Col>

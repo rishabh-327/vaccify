@@ -1,15 +1,13 @@
 @import '../../styles/variables.scss';
-.app-header {
+.appHeader {
   height: 56px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
 
-  .app-title {
-    font-family: Pacifico;
+  .appTitle {
     font-size: 2rem;
-    color: $primaryColor;
     text-align: center;
     margin: 0;
   }
