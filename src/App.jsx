@@ -8,6 +8,7 @@ import AppFooter from './components/AppFooter'
 import AppSheet from './components/AppSheet'
 import AppInput from './components/AppInput'
 import AppSelect from './components/AppSelect'
+import AppSectionTitle from './components/AppSectionTitle'
 
 function App() {
   const initialValues = {
@@ -21,6 +22,8 @@ function App() {
       errors.pincode = 'Pincode must be of length 6'
     else if (!/^\d{6}$/.test(values.pincode))
       errors.pincode = 'Pincode must only contain numbers'
+
+    if (!values.state) errors.state = 'Select a state'
     return errors
   }
 
@@ -42,14 +45,14 @@ function App() {
                   <Col className={styles.firstForm} md="6">
                     <Row className="justify-content-center">
                       <Col lg="8">
-                        <h4>Search by District</h4>
+                        <AppSectionTitle title="Search By District" />
                       </Col>
                     </Row>
                   </Col>
                   <Col md="6">
                     <Row className="justify-content-center">
                       <Col lg="8">
-                        <h4>Search by Pincode</h4>
+                        <AppSectionTitle title="Search By Pincode" />
                         <Formik
                           initialValues={initialValues}
                           validate={validate}

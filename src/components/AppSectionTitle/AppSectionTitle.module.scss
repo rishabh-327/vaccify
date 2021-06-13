@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.appSectionTitleBar {
+  width: 100px;
+  border-width: 3px;
+  border-radius: 2px;
+  margin: 0.5rem auto 0.5rem 0;
+}
+
+:global(.light) {
+  .appSectionTitleBar {
+    border-color: $primaryColor;
+  }
+}
+:global(.dark) {
+  .appSectionTitleBar {
+    border-color: $darkPrimaryColor;
+  }
+}
