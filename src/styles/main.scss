@@ -44,6 +44,11 @@ input:focus-visible {
   font-family: Pacifico;
 }
 
+/* Bootstrap Overrides */
+button.btn {
+  height: 40px;
+}
+
 // Variants
 .light {
   .app-title {
@@ -53,5 +58,8 @@ input:focus-visible {
 .dark {
   .app-title {
     color: $darkPrimaryColor;
+  }
+  .btn.btn-primary {
+    background-color: $darkPrimaryColor;
   }
 }
