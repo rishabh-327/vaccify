@@ -6,6 +6,9 @@ import { Button } from 'react-bootstrap'
 import AppInput from '../AppInput'
 import AppSelect from '../AppSelect'
 
+import states from '../../data/states'
+import districts from '../../data/districts'
+
 const DistrictSearchForm = () => {
   const initialValues = {
     state: '',
@@ -24,7 +27,7 @@ const DistrictSearchForm = () => {
   }
 
   const formSubmit = (values, actions) => {
-    console.log({ values, actions })
+    console.log({ values })
     actions.setSubmitting(false)
   }
 
@@ -39,9 +42,11 @@ const DistrictSearchForm = () => {
           <Form>
             <AppSelect label="STATE" id="state" name="state">
               <option value="">Select state</option>
-              <option value="guj">Gujarat</option>
-              <option value="raj">Rajasthan</option>
-              <option value="mh">Maharashtra</option>
+              {states.map(state => (
+                <option value={state.state_id} key={state.state_id}>
+                  {state.state_name}
+                </option>
+              ))}
             </AppSelect>
 
             <AppSelect
@@ -51,9 +56,11 @@ const DistrictSearchForm = () => {
               className="mt-4"
             >
               <option value="">Select district</option>
-              <option value="guj">Gujarat</option>
-              <option value="raj">Rajasthan</option>
-              <option value="mh">Maharashtra</option>
+              {districts.map(district => (
+                <option value={district.district_id} key={district.district_id}>
+                  {district.district_name}
+                </option>
+              ))}
             </AppSelect>
 
             <AppInput
