@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
+import classnames from 'classnames'
 
 import styles from './App.module.scss'
 
@@ -16,15 +17,21 @@ function App() {
       <AppHeader />
 
       <main className={styles.appContent}>
-        <Container className="p-4">
-          <Row className="justify-content-center">
+        <Container>
+          <Row className="justify-content-center py-md-5">
             <Col lg="10">
-              <AppSheet className="py-5">
+              <AppSheet className="py-md-5">
                 <Row>
-                  <Col className={styles.firstForm} md="6">
+                  <Col
+                    className={classnames(
+                      styles.firstForm,
+                      'px-0 px-md-3 pb-3 pb-md-0'
+                    )}
+                    md="6"
+                  >
                     <Row className="justify-content-center">
-                      <Col lg="8">
-                        <div className="d-flex flex-column justify-content-between py-4">
+                      <Col xs="11" sm="10" lg="8">
+                        <div className="d-flex flex-column justify-content-between py-md-4">
                           <AppSectionTitle
                             className="mb-4"
                             title="Search By District"
@@ -34,10 +41,10 @@ function App() {
                       </Col>
                     </Row>
                   </Col>
-                  <Col md="6">
+                  <Col className="px-0 px-md-3 pt-3 pt-md-0" md="6">
                     <Row className="justify-content-center h-100">
-                      <Col lg="8">
-                        <div className="d-flex flex-column justify-content-between h-100 py-4">
+                      <Col xs="11" sm="10" lg="8">
+                        <div className="d-flex flex-column justify-content-between h-100 py-md-4">
                           <AppSectionTitle
                             className="mb-4"
                             title="Search By Pincode"
