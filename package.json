@@ -30,7 +30,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "quote-props": [
+        "warn",
+        "consistent"
+      ]
+    }
   },
   "husky": {
     "hooks": {

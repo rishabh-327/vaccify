@@ -8,43 +8,15 @@ import VaccinationCenter from '../../components/VaccinationCenter'
 import _s from './Appointments.module.scss'
 import './Appointments.scss'
 
+import centersData from '../../data/centers'
+
 const Appointments = () => {
-  const centers = [
-    {
-      center_id: 593836,
-      name: 'PHC KADODARA SUBCENTER',
-      block_name: 'Palsana',
-      district: 'Surat',
-      pincode: 394327,
-      fee_type: 'Free',
-    },
-    {
-      center_id: 425658,
-      name: 'Vadoli Subcenter',
-      block_name: 'Bardoli',
-      district: 'Surat',
-      pincode: 394330,
-      fee_type: 'Paid',
-      vaccine_fees: [
-        {
-          vaccine: 'COVISHEILD',
-          fee: 630,
-        },
-      ],
-    },
-    {
-      center_id: 604710,
-      name: 'Primary Health Center Kosamba',
-      block_name: 'Mangrol',
-      district: 'Surat',
-      pincode: 394120,
-      fee_type: 'Free',
-    },
-  ]
+  const centers = centersData
   return (
     <div id="appointments-page">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center mb-5">
         <AppSectionTitle title="Appointments" />
+
         <button className={classnames('btn btn-sm', _s.backBtn)}>
           <CornerDownLeft size="12" />
           <span className="ml-1">Back to search</span>
