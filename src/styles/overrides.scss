@@ -4,4 +4,6 @@ $theme-colors: (
   'primary': $primaryColor,
 );
 
+$grid-gutter-width: 16px;
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

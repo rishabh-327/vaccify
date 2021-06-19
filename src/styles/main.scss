@@ -46,7 +46,11 @@ input:focus-visible {
 
 /* Bootstrap Overrides */
 button.btn {
-  height: 40px;
+  min-height: 40px;
+
+  &.btn-sm {
+    min-height: 0;
+  }
 }
 
 // Variants

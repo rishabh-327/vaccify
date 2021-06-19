@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+:global(.light) {
+  .backBtn {
+    background-color: $primaryLightest;
+    color: $primaryDark;
+
+    &:hover {
+      background-color: hsl(206, 25%, 85%);
+    }
+  }
+}
+
+:global(.dark) {
+  .backBtn {
+    background-color: $darkPrimaryLightest;
+    color: $darkPrimaryDark;
+
+    &:hover {
+      background-color: hsl(206, 28%, 30%);
+    }
+  }
+}

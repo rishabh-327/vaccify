@@ -1,0 +1,6 @@
+@import '../../styles/variables.scss';
+
+#appointments-page {
+  min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+  padding: 1.5rem 0;
+}
