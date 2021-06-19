@@ -4,7 +4,7 @@ import styles from './App.module.scss'
 
 import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
-import Home from './views/Home'
+// import Home from './views/Home'
 import Appointments from './views/Appointments'
 
 function App() {

@@ -1,0 +1,51 @@
+@import '../../styles/variables.scss';
+
+.apptag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: $borderRadius;
+  background: $primaryLightest;
+  color: $primaryDark;
+}
+
+:global(.light) {
+  .apptag {
+    background: $primaryLightest;
+    color: $primaryDark;
+
+    &:global(.success) {
+      background: $successLightest;
+      color: $successDark;
+    }
+    &:global(.danger) {
+      background: $dangerLightest;
+      color: $dangerDark;
+    }
+    &:global(.warning) {
+      background: $warningLightest;
+      color: $warningDark;
+    }
+  }
+}
+
+:global(.dark) {
+  .apptag {
+    background: $darkPrimaryLightest;
+    color: $darkPrimaryDark;
+
+    &:global(.success) {
+      background: $darkSuccessLightest;
+      color: $darkSuccessDark;
+    }
+    &:global(.danger) {
+      background: $darkDangerLightest;
+      color: $darkDangerDark;
+    }
+    &:global(.warning) {
+      background: $darkWarningLightest;
+      color: $darkWarningDark;
+    }
+  }
+}
