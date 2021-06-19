@@ -12,7 +12,6 @@ const AppHeader = () => {
   function toggleThemeHandler() {
     body.classList.toggle('dark')
     body.classList.toggle('light')
-
     setDarkMode(!darkMode)
   }
 

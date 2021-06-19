@@ -1,18 +1,57 @@
-// Colors
-$primaryColor: #346c96;
-$textColor: #212121;
-$textMutedColor: #677789;
-$surfaceColor: #f0f4f7;
-$sheetColor: #fcfcfc;
+/* Colors */
+// Light
+$primaryColor: hsl(206, 49%, 40%);
+$primaryLightest: hsl(206, 6, 95);
+$primaryDark: hsl(206, 71%, 24%);
 
-$darkPrimaryColor: #50a5e6;
-$darkTextColor: #f8f8f9;
-$darkTextMutedColor: #8fa6bf;
-$darkSurfaceColor: #212121;
-$darkSheetColor: #2a2a2a;
+$successColor: hsl(132, 45%, 50%);
+$successLightest: hsl(132, 61%, 92%);
+$successDark: hsl(132, 100%, 28%);
 
-$dangerColor: #ff2057;
+$dangerColor: hsl(349, 97%, 60%);
+$dangerLightest: hsl(349, 89%, 93%);
+$dangerDark: hsl(348, 89%, 44%);
 
+$warningColor: hsl(52, 75%, 54%);
+$warningLightest: hsl(53, 71%, 91%);
+$warningDark: hsl(52, 65%, 34%);
+
+$textColor: hsl(0, 0%, 13%);
+$textMutedColor: hsl(212, 14%, 47%);
+$textLight: hsl(0, 0%, 50%);
+
+$surfaceColor: hsl(206, 30%, 95%);
+
+$sheetColor: hsl(0, 0%, 99%);
+$sheetAccent1: hsl(204, 33%, 97%);
+
+// Dark
+$darkPrimaryColor: hsl(206, 75%, 61%);
+$darkPrimaryLightest: hsl(206, 28%, 24%);
+$darkPrimaryDark: hsl(205, 96%, 81%);
+
+$darkSuccessColor: hsl(132, 45%, 50%);
+$darkSuccessLightest: hsl(133, 41%, 23%);
+$darkSuccessDark: hsl(133, 97%, 46%);
+
+$darkDangerColor: hsl(349, 97%, 60%);
+$darkDangerLightest: hsl(349, 28%, 24%);
+$darkDangerDark: hsl(355, 100%, 51%);
+
+$darkWarningColor: hsl(52, 75%, 54%);
+$darkWarningLightest: hsl(53, 73%, 19%);
+$darkWarningDark: hsl(51, 75%, 55%);
+
+$darkTextColor: hsl(240, 8%, 97%);
+$darkTextMutedColor: hsl(211, 27%, 65%);
+$darkTextLight: hsl(0, 0%, 80%);
+
+$darkSurfaceColor: hsl(0, 0%, 13%);
+
+$darkSheetColor: hsl(0, 0%, 16%);
+$darkSheetAccent1: hsl(0, 0%, 15%);
+
+// Defaults
 $fontSize: 14px;
 $borderRadius: 4px;
 

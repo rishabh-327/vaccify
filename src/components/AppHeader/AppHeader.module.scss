@@ -21,31 +21,27 @@ button.themeSwitcher {
   align-items: center;
   transition: all 0.15s ease-in;
   background-color: transparent;
-
-  &:hover {
-    background-color: #dedede;
-  }
 }
 
 :global(.light) {
   button.themeSwitcher {
     color: $textColor;
-    background-color: $sheetColor;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    background-color: $sheetAccent1;
+    box-shadow: $thinShadow;
 
     &:hover {
-      background-color: #dedede;
+      background-color: $sheetColor;
     }
   }
 }
 :global(.dark) {
   button.themeSwitcher {
     color: $darkTextColor;
-    background-color: $darkSheetColor;
-    box-shadow: 1px 1px 6px rgb(0, 0, 0);
+    background-color: $darkSheetAccent1;
+    box-shadow: $darkThinShadow;
 
     &:hover {
-      background-color: #4e4e4e;
+      background-color: $darkSheetColor;
     }
   }
 }
