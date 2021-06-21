@@ -1,5 +1,6 @@
 import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 // import _s from './PincodeSearchForm.module.scss'
 
@@ -58,7 +59,7 @@ const PincodeSearchForm = () => {
             />
             <div className="flex-grow-1"></div>
             <Button variant="primary" block className="mt-4" type="submit">
-              SEARCH
+              <Link to="/appointments">SEARCH</Link>
             </Button>
           </Form>
         )}

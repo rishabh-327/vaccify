@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import { CornerDownLeft } from 'react-feather'
 import { DateTime } from 'luxon'
@@ -42,10 +43,10 @@ const Appointments = () => {
       <div className="d-flex justify-content-between align-items-center mb-5">
         <AppSectionTitle title="Appointments" />
 
-        <button className={classnames('btn btn-sm', _s.backBtn)}>
+        <Link className={classnames('btn btn-sm', _s.backBtn)} to="/">
           <CornerDownLeft size="12" />
           <span className="ml-1">Back to search</span>
-        </button>
+        </Link>
       </div>
 
       {daywiseAppointments}
