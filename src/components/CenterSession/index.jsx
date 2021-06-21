@@ -1,10 +1,12 @@
 import classnames from 'classnames'
+
 import AppTag from '../AppTag'
 
 import _s from './CenterSession.module.scss'
 
 const CenterSession = props => {
   const { className, session } = props
+
   return (
     <div className={classnames(className, _s.centerSession)}>
       <div className={_s.vaccineInfo}>

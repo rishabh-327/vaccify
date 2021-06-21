@@ -27,16 +27,15 @@ const VaccinationCenter = ({ className, center }) => {
         </div>
       </div>
       <div className="mt-3">
-        {center.sessions &&
-          center.sessions.map((session, idx) => {
-            return (
-              <CenterSession
-                className={idx !== center.sessions.length - 1 ? 'mb-2' : null}
-                session={session}
-                key={session.session_id}
-              />
-            )
-          })}
+        {center.sessions.map((session, idx) => {
+          return (
+            <CenterSession
+              className={idx !== center.sessions.length - 1 ? 'mb-2' : null}
+              session={session}
+              key={session.session_id}
+            />
+          )
+        })}
       </div>
     </AppSheet>
   )
