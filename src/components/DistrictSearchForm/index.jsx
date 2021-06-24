@@ -30,7 +30,7 @@ const DistrictSearchForm = props => {
 
   const formSubmit = (values, actions) => {
     actions.setSubmitting(false)
-    props.searchHandler('district', values.district, values.date)
+    props.searchHandler('District', values.district, values.date)
   }
 
   return (

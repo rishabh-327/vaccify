@@ -23,7 +23,7 @@ const PincodeSearchForm = props => {
 
   const formSubmit = (values, actions) => {
     actions.setSubmitting(false)
-    props.searchHandler('pincode', values.pincode, values.date)
+    props.searchHandler('Pin', values.pincode, values.date)
   }
 
   return (

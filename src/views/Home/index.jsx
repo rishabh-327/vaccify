@@ -15,15 +15,12 @@ import PincodeSearchForm from '../../components/PincodeSearchForm'
 import { actions as metaActions } from '../../store/metaSlice'
 import { actions as appointmentsActions } from '../../store/appointmentsSlice'
 
-import states from '../../data/states'
-
 const Home = () => {
   const dispatch = useDispatch()
   const history = useHistory()
 
   useEffect(() => {
-    // TODO:Replace with async action creater
-    dispatch(metaActions.setStates({ states }))
+    dispatch(metaActions.getStateList())
   }, [dispatch])
 
   const searchHandler = (type, key, date) => {

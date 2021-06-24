@@ -31,7 +31,7 @@ const metaSlice = createSlice({
   },
 })
 
-let metaActions = metaSlice.actions
+const metaActions = metaSlice.actions
 
 const getDistrictList = stateId => async (dispatch, getState) => {
   const { selectedState } = getState().meta
@@ -43,16 +43,22 @@ const getDistrictList = stateId => async (dispatch, getState) => {
     const { data } = await axiosClient.get(
       `/v2/admin/location/districts/${stateId}`
     )
-    dispatch(metaActions.setDistricts({ districts: data.districts }))
+    dispatch(metaActions.setDistricts({ districts: data.districts || [] }))
   } catch (error) {
     console.log(error)
   }
 }
 
-metaActions = {
-  ...metaSlice.actions,
-  getDistrictList,
+const getStateList = () => async (dispatch, getState) => {
+  if (getState().meta.states.length) return
+
+  try {
+    const { data } = await axiosClient.get(`/v2/admin/location/states`)
+    dispatch(metaActions.setStates({ states: data.states || [] }))
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const reducer = metaSlice.reducer
-export const actions = { ...metaActions, getDistrictList }
+export const actions = { ...metaActions, getDistrictList, getStateList }
