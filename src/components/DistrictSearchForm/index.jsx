@@ -1,20 +1,22 @@
+import { useSelector } from 'react-redux'
 import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
-
-// import _s from './DistrictSearchForm.module.scss'
 
 import AppInput from '../AppInput'
 import AppSelect from '../AppSelect'
 
-import states from '../../data/states'
-import districts from '../../data/districts'
+const DistrictSearchForm = props => {
+  const { states, districts } = useSelector(state => ({
+    states: state.meta.states,
+    districts: state.meta.districts,
+  }))
 
-const DistrictSearchForm = () => {
   const initialValues = {
     state: '',
     district: '',
     date: '',
   }
+
   const validate = values => {
     const errors = {}
 
@@ -28,7 +30,8 @@ const DistrictSearchForm = () => {
 
   const formSubmit = (values, actions) => {
     console.log({ values })
-    actions.setSubmitting(false)
+    props.searchHandler('district', values.district, values.date)
+    // actions.setSubmitting(false)
   }
 
   return (

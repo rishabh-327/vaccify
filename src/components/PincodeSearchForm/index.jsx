@@ -2,11 +2,9 @@ import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-// import _s from './PincodeSearchForm.module.scss'
-
 import AppInput from '../AppInput'
 
-const PincodeSearchForm = () => {
+const PincodeSearchForm = props => {
   const initialValues = {
     pincode: '',
     date: '',
@@ -26,7 +24,8 @@ const PincodeSearchForm = () => {
 
   const formSubmit = (values, actions) => {
     console.log({ values, actions })
-    actions.setSubmitting(false)
+    props.searchHandler('pincode', values.pincode, values.date)
+    // actions.setSubmitting(false)
   }
 
   return (

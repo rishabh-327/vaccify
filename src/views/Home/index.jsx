@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import classnames from 'classnames'
 
@@ -9,7 +12,26 @@ import AppSectionTitle from '../../components/AppSectionTitle'
 import DistrictSearchForm from '../../components/DistrictSearchForm'
 import PincodeSearchForm from '../../components/PincodeSearchForm'
 
+import { actions as metaActions } from '../../store/metaSlice'
+import { actions as appointmentsActions } from '../../store/appointmentsSlice'
+
+import states from '../../data/states'
+
 const Home = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    // TODO:Replace with async action creater
+    dispatch(metaActions.setStates({ states }))
+  }, [dispatch])
+
+  const searchHandler = (type, key, date) => {
+    console.log({ type, key, date })
+    dispatch(appointmentsActions.setSearchParams({ type, key, date }))
+    history.push('/appointments')
+  }
+
   return (
     <section id="home-page">
       <Row className="justify-content-center py-md-5">
@@ -30,7 +52,7 @@ const Home = () => {
                         className="mb-4"
                         title="Search By District"
                       />
-                      <DistrictSearchForm />
+                      <DistrictSearchForm searchHandler={searchHandler} />
                     </div>
                   </Col>
                 </Row>
@@ -43,7 +65,7 @@ const Home = () => {
                         className="mb-4"
                         title="Search By Pincode"
                       />
-                      <PincodeSearchForm />
+                      <PincodeSearchForm searchHandler={searchHandler} />
                     </div>
                   </Col>
                 </Row>

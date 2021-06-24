@@ -1,3 +1,4 @@
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
@@ -7,6 +8,8 @@ import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 import Home from './views/Home'
 import Appointments from './views/Appointments'
+
+import store from './store'
 
 const routes = [
   {
@@ -25,25 +28,25 @@ const routes = [
 
 function App() {
   return (
-    <Router>
-      <AppHeader />
+    <Provider store={store}>
+      <Router>
+        <AppHeader />
 
-      <main className={styles.appContent}>
-        <Container>
-          {/* <Home /> */}
-          {/* <Appointments /> */}
-          <Switch>
-            {routes.map(route => (
-              <Route key={route.name} path={route.path} exact={route.exact}>
-                {<route.component />}
-              </Route>
-            ))}
-          </Switch>
-        </Container>
-      </main>
+        <main className={styles.appContent}>
+          <Container>
+            <Switch>
+              {routes.map(route => (
+                <Route key={route.name} path={route.path} exact={route.exact}>
+                  {<route.component />}
+                </Route>
+              ))}
+            </Switch>
+          </Container>
+        </main>
 
-      <AppFooter />
-    </Router>
+        <AppFooter />
+      </Router>
+    </Provider>
   )
 }
 
