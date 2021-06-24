@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap'
 import { CornerDownLeft } from 'react-feather'
 import classnames from 'classnames'
 
+import AppLoader from '../../components/AppLoader'
 import AppSectionTitle from '../../components/AppSectionTitle'
 import VaccinationCenter from '../../components/VaccinationCenter'
 
@@ -63,7 +64,8 @@ const Appointments = () => {
         </Link>
       </div>
 
-      {daywiseAppointments}
+      {appointmentsSlice.loading && <AppLoader />}
+      {!appointmentsSlice.loading && daywiseAppointments}
     </div>
   )
 }
