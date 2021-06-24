@@ -1,6 +1,5 @@
 import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
 import AppInput from '../AppInput'
 
@@ -23,9 +22,8 @@ const PincodeSearchForm = props => {
   }
 
   const formSubmit = (values, actions) => {
-    console.log({ values, actions })
+    actions.setSubmitting(false)
     props.searchHandler('pincode', values.pincode, values.date)
-    // actions.setSubmitting(false)
   }
 
   return (
@@ -58,7 +56,7 @@ const PincodeSearchForm = props => {
             />
             <div className="flex-grow-1"></div>
             <Button variant="primary" block className="mt-4" type="submit">
-              <Link to="/appointments">SEARCH</Link>
+              SEARCH
             </Button>
           </Form>
         )}

@@ -27,7 +27,6 @@ const Home = () => {
   }, [dispatch])
 
   const searchHandler = (type, key, date) => {
-    console.log({ type, key, date })
     dispatch(appointmentsActions.setSearchParams({ type, key, date }))
     history.push('/appointments')
   }

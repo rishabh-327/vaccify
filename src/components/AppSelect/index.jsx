@@ -6,7 +6,6 @@ import classname from 'classnames'
 import _s from './AppSelect.module.scss'
 
 import { actions as metaActions } from '../../store/metaSlice'
-import districts from '../../data/districts'
 
 const AppSelect = ({ label, className, ...props }) => {
   const dispatch = useDispatch()
@@ -18,9 +17,7 @@ const AppSelect = ({ label, className, ...props }) => {
 
   useEffect(() => {
     if (state) {
-      console.log('Make API request here and update the redux store.')
-      // TODO:Replace with async action creater
-      dispatch(metaActions.setDistricts({ districts }))
+      dispatch(metaActions.getDistrictList(state))
     }
   }, [state, dispatch])
 
