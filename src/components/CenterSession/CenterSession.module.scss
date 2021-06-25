@@ -6,11 +6,11 @@
   .vaccineInfo,
   .doseInfo {
     display: flex;
-    justify-content: space-between;
     padding: 0.5rem;
   }
 
   .doseInfo {
+    justify-content: space-between;
     & > div {
       text-align: center;
     }

@@ -6,9 +6,19 @@ const getDatewiseAppointments = centers => {
   for (let center of centers) {
     const datewiseSessions = {}
 
+    const vaccinationFees = {}
+    if (center.vaccine_fees) {
+      for (let vaccine of center.vaccine_fees) {
+        vaccinationFees[vaccine.vaccine] = vaccine.fee
+      }
+    }
+
     for (let session of center.sessions) {
       if (!datewiseSessions[session.date]) datewiseSessions[session.date] = []
-      datewiseSessions[session.date].push(session)
+      datewiseSessions[session.date].push({
+        ...session,
+        fee: vaccinationFees[session.vaccine],
+      })
     }
 
     for (let date in datewiseSessions) {

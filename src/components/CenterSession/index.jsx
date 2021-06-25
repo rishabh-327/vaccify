@@ -11,6 +11,12 @@ const CenterSession = props => {
     <div className={classnames(className, _s.centerSession)}>
       <div className={_s.vaccineInfo}>
         <AppTag>{session.vaccine}</AppTag>
+        {session.fee && (
+          <AppTag className="ml-2" variant="warning">
+            ₹ {session.fee}
+          </AppTag>
+        )}
+        <div className="flex-grow-1"></div>
         <AppTag variant="danger">{session.min_age_limit}+</AppTag>
       </div>
       <div className={_s.doseInfo}>
