@@ -13,7 +13,7 @@ import DistrictSearchForm from '../../components/DistrictSearchForm'
 import PincodeSearchForm from '../../components/PincodeSearchForm'
 
 import { actions as metaActions } from '../../store/metaSlice'
-import { actions as appointmentsActions } from '../../store/appointmentsSlice'
+import { actions as searchActions } from '../../store/searchSlice'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -23,8 +23,24 @@ const Home = () => {
     dispatch(metaActions.getStateList())
   }, [dispatch])
 
-  const searchHandler = (type, key, date) => {
-    dispatch(appointmentsActions.setSearchParams({ type, key, date }))
+  const searchHandler = (type, inputValues) => {
+    if (type === 'District') {
+      dispatch(
+        searchActions.saveDistrictInputs({
+          date: inputValues.date,
+          state_id: inputValues.state,
+          district_id: inputValues.district,
+        })
+      )
+    }
+    if (type === 'Pin') {
+      dispatch(
+        searchActions.savePincodeInputs({
+          date: inputValues.date,
+          pincode: inputValues.pincode,
+        })
+      )
+    }
     history.push('/appointments')
   }
 

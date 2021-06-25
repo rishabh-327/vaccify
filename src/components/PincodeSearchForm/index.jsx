@@ -1,13 +1,17 @@
+import { useSelector } from 'react-redux'
 import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
 
 import AppInput from '../AppInput'
 
 const PincodeSearchForm = props => {
+  const { date, pincode } = useSelector(state => state.search)
+
   const initialValues = {
-    pincode: '',
-    date: '',
+    pincode,
+    date,
   }
+
   const validate = values => {
     const errors = {}
 
@@ -23,7 +27,7 @@ const PincodeSearchForm = props => {
 
   const formSubmit = (values, actions) => {
     actions.setSubmitting(false)
-    props.searchHandler('Pin', values.pincode, values.date)
+    props.searchHandler('Pin', values)
   }
 
   return (

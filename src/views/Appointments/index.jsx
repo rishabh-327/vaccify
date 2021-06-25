@@ -18,20 +18,14 @@ const Appointments = () => {
   const dispatch = useDispatch()
   const { replace } = useHistory()
 
-  const { appointmentsSlice } = useSelector(state => ({
-    appointmentsSlice: state.appointments,
-  }))
+  const searchSlice = useSelector(state => state.search)
+  const appointmentsSlice = useSelector(state => state.appointments)
 
   useEffect(() => {
-    if (
-      !appointmentsSlice.searchParams.type ||
-      !appointmentsSlice.searchParams.key ||
-      !appointmentsSlice.searchParams.date
-    ) {
-      return replace('/')
-    }
+    if (!searchSlice.type) return replace('/')
+
     dispatch(appointmentActions.getAppointments())
-  }, [appointmentsSlice.searchParams, dispatch, replace])
+  }, [searchSlice, dispatch, replace])
 
   const daywiseAppointments = appointmentsSlice.appointments.map(
     (appointmentsOnDate, idx) => (

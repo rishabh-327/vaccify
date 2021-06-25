@@ -12,11 +12,6 @@ const axiosClient = axios.create({
 })
 
 const initialState = {
-  searchParams: {
-    type: '',
-    key: '',
-    date: null,
-  },
   loading: false,
   error: null,
   appointments: [],
@@ -35,26 +30,21 @@ const appointmentsSlice = createSlice({
     setAppointments: (state, action) => {
       state.appointments = action.payload.appointments
     },
-    setSearchParams: (state, action) => {
-      const { type, key, date } = action.payload
-      state.searchParams.type = type
-      state.searchParams.date = date
-      state.searchParams.key = key
-    },
   },
 })
 
 const appointmentActions = appointmentsSlice.actions
 
 const getAppointments = () => async (dispatch, getState) => {
-  const { searchParams } = getState().appointments
+  const searchParams = getState().search
 
   let endpoint = `/v2/appointment/sessions/public/calendarBy${searchParams.type}`
 
   if (searchParams.type === 'District') {
-    endpoint += `?district_id=${searchParams.key}`
-  } else if (searchParams.type === 'Pin') {
-    endpoint += `?pincode=${searchParams.key}`
+    endpoint += `?district_id=${searchParams.district.district_id}`
+  }
+  if (searchParams.type === 'Pin') {
+    endpoint += `?pincode=${searchParams.pincode}`
   }
 
   endpoint += `&date=${searchParams.date.split('-').reverse().join('-')}`

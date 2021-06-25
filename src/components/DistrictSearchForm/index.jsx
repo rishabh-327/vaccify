@@ -11,10 +11,15 @@ const DistrictSearchForm = props => {
     districts: state.meta.districts,
   }))
 
+  const {
+    date,
+    district: { state_id, district_id },
+  } = useSelector(state => state.search)
+
   const initialValues = {
-    state: '',
-    district: '',
-    date: '',
+    state: state_id,
+    district: district_id,
+    date,
   }
 
   const validate = values => {
@@ -30,7 +35,7 @@ const DistrictSearchForm = props => {
 
   const formSubmit = (values, actions) => {
     actions.setSubmitting(false)
-    props.searchHandler('District', values.district, values.date)
+    props.searchHandler('District', values)
   }
 
   return (
