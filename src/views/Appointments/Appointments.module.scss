@@ -1,5 +1,15 @@
 @import '../../styles/variables.scss';
 
+.filterGroup {
+  padding: 0.25rem;
+}
+.filterDivider {
+  width: 0.5px;
+  height: 12px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 :global(.light) {
   .backBtn {
     background-color: $primaryLightest;
@@ -8,6 +18,21 @@
     &:hover {
       background-color: hsl(206, 25%, 85%);
     }
+  }
+  .filterToggleButton {
+    &:global(.btn.btn-primary) {
+      color: $textColor;
+      background-color: $primaryLightest;
+      border: 2px solid $primaryLightest;
+
+      &:global(.active) {
+        background-color: $primaryLightest;
+        border: 2px solid $primaryColor;
+      }
+    }
+  }
+  .filterDivider {
+    background-color: $textColor;
   }
 }
 
@@ -19,5 +44,19 @@
     &:hover {
       background-color: hsl(206, 28%, 30%);
     }
+  }
+  .filterToggleButton {
+    &:global(.btn.btn-primary) {
+      background-color: $darkPrimaryLightest;
+      border: 2px solid $darkPrimaryLightest;
+
+      &:global(.active) {
+        background-color: $darkPrimaryLightest;
+        border: 2px solid $darkPrimaryColor;
+      }
+    }
+  }
+  .filterDivider {
+    background-color: $darkTextColor;
   }
 }
