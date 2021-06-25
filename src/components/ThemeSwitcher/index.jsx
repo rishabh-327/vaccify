@@ -1,22 +1,17 @@
-import { useState } from 'react'
+import useDarkMode from 'use-dark-mode'
 import { Sun, Moon } from 'react-feather'
 
 import _s from './ThemeSwitcher.module.scss'
 
-const body = document.querySelector('body')
-
 const ThemeSwitcher = () => {
-  const [darkMode, setDarkMode] = useState(false)
-
-  function toggleThemeHandler() {
-    body.classList.toggle('dark')
-    body.classList.toggle('light')
-    setDarkMode(!darkMode)
-  }
+  const { value: isDarkActive, toggle } = useDarkMode(false, {
+    classNameLight: 'light',
+    classNameDark: 'dark',
+  })
 
   return (
-    <button className={_s.themeSwitcher} onClick={toggleThemeHandler}>
-      {darkMode ? <Sun size="18" /> : <Moon size="18" />}
+    <button className={_s.themeSwitcher} onClick={toggle}>
+      {isDarkActive ? <Sun size="18" /> : <Moon size="18" />}
     </button>
   )
 }
