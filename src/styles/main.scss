@@ -61,11 +61,27 @@ button.btn {
 
 // Variants
 .light {
+  button.btn {
+    color: $textColor;
+
+    &.btn-primary {
+      color: $darkTextColor;
+    }
+  }
+
   .app-title {
     color: $primaryColor;
   }
 }
+
 .dark {
+  button.btn {
+    color: $darkTextColor;
+
+    &.btn-primary {
+      color: $textColor;
+    }
+  }
   .app-title {
     color: $darkPrimaryColor;
   }

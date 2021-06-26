@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { CornerDownLeft } from 'react-feather'
 import classnames from 'classnames'
 import { cloneDeep } from 'lodash/lang'
+import { AlertCircle } from 'react-feather'
 
+import AppToggleButton from '../../components/AppToggleButton'
 import AppLoader from '../../components/AppLoader'
 import AppSectionTitle from '../../components/AppSectionTitle'
 import VaccinationCenter from '../../components/VaccinationCenter'
@@ -22,7 +24,7 @@ const Appointments = () => {
       Free: true,
       Paid: true,
     },
-    onlyAvailable: true,
+    onlyAvailable: false,
     ageLimit: {
       18: true,
       45: true,
@@ -62,9 +64,9 @@ const Appointments = () => {
     setFilteredAppointments(filterResult)
   }, [filter, appointmentsSlice.appointments])
 
-  const daywiseAppointments = filteredAppointments.map(
+  let daywiseAppointments = filteredAppointments.map(
     (appointmentsOnDate, idx) =>
-      appointmentsOnDate.centers.length > 0 ? (
+      appointmentsOnDate.centers.length ? (
         <Row className="mb-5" key={idx}>
           <Col xs="12">
             <p className="mb-2">
@@ -72,16 +74,31 @@ const Appointments = () => {
             </p>
           </Col>
 
-          {appointmentsOnDate.centers.map(center => {
-            return center.sessions.length ? (
-              <Col md="6" lg="4" key={center.center_id}>
-                <VaccinationCenter center={center} />
-              </Col>
-            ) : null
-          })}
+          {appointmentsOnDate.centers.map(center => (
+            <Col md="6" lg="4" key={center.center_id}>
+              <VaccinationCenter center={center} />
+            </Col>
+          ))}
         </Row>
       ) : null
   )
+  if (!daywiseAppointments.length) {
+    daywiseAppointments = (
+      <div className="d-flex">
+        <div className="mr-2">
+          <AlertCircle size="20" />
+        </div>
+        <div className="flex-grow-1">
+          <h6 className="font-weight-bold">
+            There is no appointment available matching the requested criteria.
+          </h6>
+          <h6 className="mt-4">
+            Search with different criteria or apply different filter.
+          </h6>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div id="appointments-page">
@@ -97,61 +114,48 @@ const Appointments = () => {
         <p className="px-2 m-0">Filters</p>
         <div className="d-flex flex-wrap align-items-center">
           <div className={_s.filterGroup}>
-            <Button
-              className={classnames('px-4 mr-1', _s.filterToggleButton, {
-                active: filter.fee.Free,
-              })}
-              size="sm"
+            <AppToggleButton
+              active={filter.fee.Free}
               onClick={() => toggleFeeFilter('Free')}
+              className="mr-1"
             >
               Free
-            </Button>
-            <Button
-              className={classnames('px-4', _s.filterToggleButton, {
-                active: filter.fee.Paid,
-              })}
-              variant="primary"
-              size="sm"
+            </AppToggleButton>
+            <AppToggleButton
+              active={filter.fee.Paid}
               onClick={() => toggleFeeFilter('Paid')}
             >
               Paid
-            </Button>
+            </AppToggleButton>
           </div>
+
           <div className={_s.filterDivider}></div>
+
           <div className={_s.filterGroup}>
-            <Button
-              className={classnames('px-4 mr-1', _s.filterToggleButton, {
-                active: filter.ageLimit[18],
-              })}
-              variant="primary"
-              size="sm"
+            <AppToggleButton
+              active={filter.ageLimit[18]}
               onClick={() => toggleAgeLimitFilter(18)}
+              className="mr-1"
             >
               For 18+
-            </Button>
-            <Button
-              className={classnames('px-4', _s.filterToggleButton, {
-                active: filter.ageLimit[45],
-              })}
-              variant="primary"
-              size="sm"
+            </AppToggleButton>
+            <AppToggleButton
+              active={filter.ageLimit[45]}
               onClick={() => toggleAgeLimitFilter(45)}
             >
               For 45+
-            </Button>
+            </AppToggleButton>
           </div>
+
           <div className={_s.filterDivider}></div>
+
           <div className={_s.filterGroup}>
-            <Button
-              className={classnames('px-4', _s.filterToggleButton, {
-                active: filter.onlyAvailable,
-              })}
-              variant="primary"
-              size="sm"
+            <AppToggleButton
+              active={filter.onlyAvailable}
               onClick={toggleAvailabilityFilter}
             >
               Only Available
-            </Button>
+            </AppToggleButton>
           </div>
         </div>
       </div>
@@ -165,7 +169,7 @@ const Appointments = () => {
 export default Appointments
 
 function filterAppointments(filter, appointments) {
-  const filteredAppointments = []
+  let filteredAppointments = []
 
   // filter for 'Free/Paid'
   appointments.forEach(appointmentsOnDate => {
@@ -197,5 +201,10 @@ function filterAppointments(filter, appointments) {
       (a, b) => a.sessions.length - b.sessions.length
     )
   })
+
+  // Cleanup for dates with zero center
+  filteredAppointments = filteredAppointments.filter(
+    appointmentsOnDate => appointmentsOnDate.centers.length
+  )
   return filteredAppointments
 }

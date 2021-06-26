@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.appToggleButton {
+  padding: 0.25rem 1.5rem;
+}
+
+:global(.light) {
+  .appToggleButton {
+    background-color: $primaryLightest;
+    border-left: 3px solid $primaryLightest;
+
+    &:hover {
+      background-color: $primaryLighter;
+      border-left-color: $primaryLighter;
+    }
+
+    &.active {
+      background-color: $primaryLighter;
+      border-left-color: $primaryDark;
+
+      &:hover {
+        background-color: $primaryLightest;
+      }
+    }
+  }
+}
+
+:global(.dark) {
+  .appToggleButton {
+    background-color: $darkPrimaryLightest;
+    border-left: 3px solid $darkPrimaryLightest;
+
+    &:hover {
+      background-color: $darkPrimaryLighter;
+      border-left-color: $darkPrimaryLighter;
+    }
+
+    &.active {
+      background-color: $darkPrimaryLighter;
+      border-left-color: $darkPrimaryDark;
+
+      &:hover {
+        background-color: $darkPrimaryLightest;
+      }
+    }
+  }
+}
