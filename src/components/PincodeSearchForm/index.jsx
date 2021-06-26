@@ -48,7 +48,7 @@ const PincodeSearchForm = props => {
             />
             <AppInput
               label="DATE"
-              id="date"
+              id="date-pincode"
               name="date"
               type="date"
               min={new Date()

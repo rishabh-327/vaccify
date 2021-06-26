@@ -72,7 +72,7 @@ const DistrictSearchForm = props => {
 
             <AppInput
               label="DATE"
-              id="date"
+              id="date-district"
               name="date"
               type="date"
               min={new Date()

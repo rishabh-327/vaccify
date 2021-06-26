@@ -10,7 +10,11 @@ const ThemeSwitcher = () => {
   })
 
   return (
-    <button className={_s.themeSwitcher} onClick={toggle}>
+    <button
+      className={_s.themeSwitcher}
+      onClick={toggle}
+      aria-label="Switch Theme"
+    >
       {isDarkActive ? <Sun size="18" /> : <Moon size="18" />}
     </button>
   )
