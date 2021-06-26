@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { Container } from 'react-bootstrap'
 
 import styles from './App.module.scss'
@@ -29,23 +30,27 @@ const routes = [
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <AppHeader />
+      <HelmetProvider>
+        <Router>
+          <AppHeader />
+          <Helmet>
+            <title>vaccify</title>
+          </Helmet>
+          <main className={styles.appContent}>
+            <Container>
+              <Switch>
+                {routes.map(route => (
+                  <Route key={route.name} path={route.path} exact={route.exact}>
+                    {<route.component />}
+                  </Route>
+                ))}
+              </Switch>
+            </Container>
+          </main>
 
-        <main className={styles.appContent}>
-          <Container>
-            <Switch>
-              {routes.map(route => (
-                <Route key={route.name} path={route.path} exact={route.exact}>
-                  {<route.component />}
-                </Route>
-              ))}
-            </Switch>
-          </Container>
-        </main>
-
-        <AppFooter />
-      </Router>
+          <AppFooter />
+        </Router>
+      </HelmetProvider>
     </Provider>
   )
 }

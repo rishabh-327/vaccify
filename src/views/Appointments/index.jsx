@@ -6,6 +6,7 @@ import { CornerDownLeft } from 'react-feather'
 import classnames from 'classnames'
 import { cloneDeep } from 'lodash/lang'
 import { AlertCircle } from 'react-feather'
+import { Helmet } from 'react-helmet-async'
 
 import AppToggleButton from '../../components/AppToggleButton'
 import AppLoader from '../../components/AppLoader'
@@ -101,68 +102,73 @@ const Appointments = () => {
   }
 
   return (
-    <div id="appointments-page">
-      <div className="d-flex justify-content-between align-items-center">
-        <AppSectionTitle title="Appointments" />
+    <>
+      <Helmet>
+        <title>Appointments | vaccify</title>
+      </Helmet>
+      <div id="appointments-page">
+        <div className="d-flex justify-content-between align-items-center">
+          <AppSectionTitle title="Appointments" />
 
-        <Link className={classnames('btn btn-sm', _s.backBtn)} to="/">
-          <CornerDownLeft size="12" />
-          <span className="ml-1">Back to search</span>
-        </Link>
-      </div>
-      <div className="mt-4 mb-5">
-        <p className="px-2 m-0">Filters</p>
-        <div className="d-flex flex-wrap align-items-center">
-          <div className={_s.filterGroup}>
-            <AppToggleButton
-              active={filter.fee.Free}
-              onClick={() => toggleFeeFilter('Free')}
-              className="mr-1"
-            >
-              Free
-            </AppToggleButton>
-            <AppToggleButton
-              active={filter.fee.Paid}
-              onClick={() => toggleFeeFilter('Paid')}
-            >
-              Paid
-            </AppToggleButton>
-          </div>
+          <Link className={classnames('btn btn-sm', _s.backBtn)} to="/">
+            <CornerDownLeft size="12" />
+            <span className="ml-1">Back to search</span>
+          </Link>
+        </div>
+        <div className="mt-4 mb-5">
+          <p className="px-2 m-0">Filters</p>
+          <div className="d-flex flex-wrap align-items-center">
+            <div className={_s.filterGroup}>
+              <AppToggleButton
+                active={filter.fee.Free}
+                onClick={() => toggleFeeFilter('Free')}
+                className="mr-1"
+              >
+                Free
+              </AppToggleButton>
+              <AppToggleButton
+                active={filter.fee.Paid}
+                onClick={() => toggleFeeFilter('Paid')}
+              >
+                Paid
+              </AppToggleButton>
+            </div>
 
-          <div className={_s.filterDivider}></div>
+            <div className={_s.filterDivider}></div>
 
-          <div className={_s.filterGroup}>
-            <AppToggleButton
-              active={filter.ageLimit[18]}
-              onClick={() => toggleAgeLimitFilter(18)}
-              className="mr-1"
-            >
-              For 18+
-            </AppToggleButton>
-            <AppToggleButton
-              active={filter.ageLimit[45]}
-              onClick={() => toggleAgeLimitFilter(45)}
-            >
-              For 45+
-            </AppToggleButton>
-          </div>
+            <div className={_s.filterGroup}>
+              <AppToggleButton
+                active={filter.ageLimit[18]}
+                onClick={() => toggleAgeLimitFilter(18)}
+                className="mr-1"
+              >
+                For 18+
+              </AppToggleButton>
+              <AppToggleButton
+                active={filter.ageLimit[45]}
+                onClick={() => toggleAgeLimitFilter(45)}
+              >
+                For 45+
+              </AppToggleButton>
+            </div>
 
-          <div className={_s.filterDivider}></div>
+            <div className={_s.filterDivider}></div>
 
-          <div className={_s.filterGroup}>
-            <AppToggleButton
-              active={filter.onlyAvailable}
-              onClick={toggleAvailabilityFilter}
-            >
-              Only Available
-            </AppToggleButton>
+            <div className={_s.filterGroup}>
+              <AppToggleButton
+                active={filter.onlyAvailable}
+                onClick={toggleAvailabilityFilter}
+              >
+                Only Available
+              </AppToggleButton>
+            </div>
           </div>
         </div>
-      </div>
 
-      {appointmentsSlice.loading && <AppLoader />}
-      {!appointmentsSlice.loading && daywiseAppointments}
-    </div>
+        {appointmentsSlice.loading && <AppLoader />}
+        {!appointmentsSlice.loading && daywiseAppointments}
+      </div>
+    </>
   )
 }
 
